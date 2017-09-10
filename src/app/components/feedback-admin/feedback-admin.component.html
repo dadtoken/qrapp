@@ -1,0 +1,19 @@
+<div class="col-12">
+    <h2>Lista odpowiedzi</h2>
+    <table class="table table-striped">
+        <thead class="thead-default">
+            <tr>
+                <th width="20%">Email</th>
+                <th width="40%">Jak oceniasz przydatność tego rozwiązania?</th>
+                <th width="40%">Co byś dodał lub zmienił w tym rozwiązaniu i dlaczego?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let feedback of feedbackList">
+                <td>{{feedback.user.username}}</td>
+                <td>{{feedback.question1}}</td>
+                <td>{{feedback.question2}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

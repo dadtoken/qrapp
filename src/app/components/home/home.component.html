@@ -1,0 +1,42 @@
+<div class="col-md-6 col-md-offset-3">
+    <h1>Hej, {{currentUser.firstName}}!</h1>
+    <div class="clearfix"></div>
+    <p>Dodaj Twój nowy przedmiot do wypożyczenia</p>
+    <p><button [routerLink]="['/object/add']" class="btn btn-primary">Dodaj</button></p>
+    <div class="clearfix"></div>
+    <p>Przejmij przedmiot od innej osoby dodając zdjęcie QR kodu tego przedmiotu</p>
+    <ng2-file-input (change)="changeListener($event)"></ng2-file-input>
+    <div class="clearfix"></div>
+    <p>Przejmij przedmiot od innej osoby wpisując 12 słów przedmiotu:</p>
+    <input type="text" pattern="(\w+\W+){11}(\w+)" (input)="validate($event)" name="passphrase" />
+    <button [disabled]="passError" class="btn btn-primary" (click)="updateByPassphrase()">Przypisz</button>
+    <p *ngIf="passError" class="help-block">Passphrase musi mieć 12 słów!</p>
+    <div class="clearfix"></div>
+    <p>Lista Twoich przedmiotów:</p>
+    <ul>
+        <li *ngFor="let obj of objects">
+            <a [routerLink]="['/object/details',obj._id]">{{obj.name}}</a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+    <p>Lista przedmiotów przekazanych przez Ciebie innym osobom: </p>
+    <ul>
+        <li *ngFor="let obj of historyObjects">
+            <a [routerLink]="['/object/details',obj._id]">{{obj.name}}</a>
+        </li>
+    </ul>
+    <p>Lista przedmiotów możliwych do wypożyczenia: </p>
+    <ul>
+        <li *ngFor="let obj of sharedObjects">
+            <a [routerLink]="['/object/details',obj._id]">{{obj.name}}</a>
+            <p>Posiada: {{obj.currentOwner.username}}</p>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+    <a *ngIf="currentUser.isAdmin" class="btn btn-primary" [routerLink]="['/feedback']">Feedback</a>
+    <p><a [routerLink]="['/login']" class="btn btn-danger">Wyloguj</a></p>
+    <div class="clearfix"></div>
+    <p *ngIf="!currentUser.isAdmin">Prosimy o informację zwrotną, co ulepszy to rozwiązanie - <a [routerLink]="['/feedback/add']">klik!</a></p>
+
+</div>
+<div class="clearfix"></div>

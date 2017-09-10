@@ -1,0 +1,5 @@
+﻿{
+"connectionString": "mongodb://dadtoken:bazadanych1!@cluster0-shard-00-00-yfofw.mongodb.net:27017,cluster0-shard-00-01-yfofw.mongodb.net:27017,cluster0-shard-00-02-yfofw.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin",
+    "apiUrl": "http://localhost:3000",
+    "secret": "qrapp mongo db"
+}
